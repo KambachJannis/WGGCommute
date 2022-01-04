@@ -1,0 +1,2 @@
+MAPS_API_KEY: your Google Maps API Key
+LAMBDA_URL: URL to your AWS Lambda API
