@@ -6,7 +6,7 @@ function processData(data, domElements, addresses, target) {
     }
 }
 
-function main(target){
+function main(target, api){
     const city = document.getElementById("autocompinp").value;
     const domElements = document.querySelectorAll('.col-xs-11');
     let addresses = [];
@@ -16,7 +16,7 @@ function main(target){
         addresses.push(textarray[2]);
     }
     console.log(addresses);
-    fetch("https://lambda.api", {method: 'POST', body: JSON.stringify({"add": addresses,"tgt": target,"city": city,"modes": ["driving", "bicycling", "transit"]})})
+    fetch(api, {method: 'POST', body: JSON.stringify({"add": addresses,"tgt": target,"city": city,"modes": ["driving", "bicycling", "transit"]})})
         .then((response) => response.text())
         .then((result) => {
             data = JSON.parse(result);
@@ -25,8 +25,8 @@ function main(target){
         .catch((error) => console.log("error", error));
 }
 
-chrome.storage.sync.get("location", ({ location }) => {
-    console.log(location);
-    main(location);
+chrome.storage.sync.get(["location", "api"], ({ location,  api }) => {
+    console.log(location, api);
+    main(location, api);
 });
 
