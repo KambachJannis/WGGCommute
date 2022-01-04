@@ -1,9 +1,14 @@
 import requests
 import json
+import yaml
+
+def getAPIKey():
+    with open('config.yaml', 'r') as ymlfile:
+        cfg = yaml.safe_load(ymlfile)
+    return cfg['MAPS_API_KEY']
 
 def getTimes(origins, destinations, mode):
-    key = 'apikey'
-    
+    key = getAPIKey()
     url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+origins+"&destinations="+destinations+"&mode="+mode+"&key="+key
     payload={}
     headers = {}

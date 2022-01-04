@@ -1,1 +1,5 @@
 *.yaml
+*.ipynb
+/api/*
+!/api/lamdba_function.py
+!/api/requirements.txt
