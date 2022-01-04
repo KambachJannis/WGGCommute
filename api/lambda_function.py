@@ -75,12 +75,3 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': {"messages": result}
     }
-
-test = {
-    "add": ["Friedrich-Ebert-Strasse", "Kellermannstraße 2 "],
-    "tgt": "Bentelerstraße 62",
-    "city": "Münster",
-    "modes": ["driving", "bicycling", "transit"]
-}
-
-print(lambda_handler(test, None))
