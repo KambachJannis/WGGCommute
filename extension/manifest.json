@@ -1,0 +1,24 @@
+{
+  "name": "WGGCommute",
+  "description": "Calculates commute times to any predefined location via Google Maps!",
+  "version": "0.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.wg-gesucht.de/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": ["storage", "activeTab", "scripting"],
+  "icons": {
+    "16": "/icons/16.png",
+    "32": "/icons/32.png",
+    "48": "/icons/48.png",
+    "128": "/icons/128.png"
+  },
+  "options_page": "options.html",
+  "host_permissions": ["https://*.amazonaws.com/*"]
+}
